@@ -1,0 +1,247 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hardik Gaikwad // Terminal Protocol v2.4.0</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-paper: #111417;
+      --color-term-bg: #0E1B2A;
+      --color-header-bg: #162436;
+      --color-border: #2E4C70;
+      --color-text: #EDE8DC;
+      --color-muted: #94A3B8;
+      --color-orange: #E0732E;
+      --color-golden: #E0B23A;
+      --color-cyan: #4D7FA9;
+      --color-green: #22C55E;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--color-paper);
+      background-image: 
+        linear-gradient(rgba(46, 76, 112, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(46, 76, 112, 0.15) 1px, transparent 1px);
+      background-size: 24px 24px;
+      color: var(--color-text);
+      font-family: 'Space Mono', Consolas, monospace;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+
+    .terminal-container {
+      width: 100%;
+      max-width: 860px;
+      background: var(--color-term-bg);
+      border: 1.5px solid var(--color-border);
+      box-shadow: 4px 6px 0px rgba(5, 11, 18, 0.9), 0 0 24px rgba(46, 76, 112, 0.2);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .term-bar {
+      background: var(--color-header-bg);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+    }
+
+    .dot.red { background: #FF5F56; }
+    .dot.yellow { background: #FFBD2E; }
+    .dot.green { background: #27C93F; }
+
+    .term-title {
+      margin: 0 auto;
+      color: var(--color-muted);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+    }
+
+    .status-badge {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--color-green);
+      letter-spacing: 0.06em;
+    }
+
+    .term-body {
+      padding: 20px 24px 28px;
+      line-height: 1.65;
+      font-size: 13.5px;
+      min-height: 320px;
+    }
+
+    .cmd-line {
+      margin-bottom: 4px;
+      opacity: 0;
+      animation: fadeIn 0.15s forwards;
+    }
+
+    .prompt-user { color: var(--color-orange); font-weight: 700; }
+    .prompt-dir { color: var(--color-cyan); }
+    .prompt-sym { color: var(--color-golden); font-weight: 700; }
+    .prompt-cmd { color: var(--color-text); font-weight: 700; }
+
+    .output {
+      color: var(--color-muted);
+      margin-bottom: 14px;
+      padding-left: 12px;
+      border-left: 2px solid rgba(46, 76, 112, 0.4);
+      opacity: 0;
+      animation: fadeIn 0.2s forwards;
+    }
+
+    .output.success { color: var(--color-green); font-weight: 600; }
+    .output.gold { color: var(--color-golden); font-style: italic; }
+    .output.cyan { color: var(--color-cyan); }
+    .output.pill-box { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+    .pill {
+      background: rgba(46, 76, 112, 0.3);
+      border: 1px solid var(--color-border);
+      padding: 2px 8px;
+      font-size: 11.5px;
+      color: var(--color-text);
+      border-radius: 3px;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      background: var(--color-green);
+      color: transparent;
+      animation: blink 1s step-end infinite;
+      margin-left: 4px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateX(-4px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .d1 { animation-delay: 0.2s; }
+    .d2 { animation-delay: 0.9s; }
+    .d3 { animation-delay: 1.8s; }
+    .d4 { animation-delay: 2.6s; }
+    .d5 { animation-delay: 3.4s; }
+    .d6 { animation-delay: 4.1s; }
+    .d7 { animation-delay: 4.8s; }
+    .d8 { animation-delay: 5.5s; }
+
+    .nav-footer {
+      margin-top: 16px;
+      display: flex;
+      gap: 16px;
+      font-size: 12px;
+    }
+
+    .nav-footer a {
+      color: var(--color-orange);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--color-orange);
+      padding-bottom: 2px;
+    }
+
+    .nav-footer a:hover {
+      color: var(--color-golden);
+      border-color: var(--color-golden);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="terminal-container">
+    <div class="term-bar">
+      <div class="dots">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+      </div>
+      <div class="term-title">hardik@kali: ~/pentest [BASH 5.2 // ENCRYPTED TTY]</div>
+      <div class="status-badge">ONLINE ●</div>
+    </div>
+
+    <div class="term-body">
+      <!-- Command 1 -->
+      <div class="cmd-line d1">
+        <span class="prompt-user">hardik@kali</span>:<span class="prompt-dir">~</span><span class="prompt-sym">$</span> <span class="prompt-cmd">whoami</span>
+      </div>
+      <div class="output success d2">
+        Hardik Gaikwad — Offensive Security Researcher &amp; Software Engineer [eJPT | TryHackMe Top 4%]
+      </div>
+
+      <!-- Command 2 -->
+      <div class="cmd-line d3">
+        <span class="prompt-user">hardik@kali</span>:<span class="prompt-dir">~</span><span class="prompt-sym">$</span> <span class="prompt-cmd">nmap -sV -sC -Pn target.corp</span>
+      </div>
+      <div class="output d4">
+        [+] 22/tcp  OPEN  OpenSSH 8.9p1 Ubuntu (KeyAuth Enforced)<br>
+        [+] 80/tcp  OPEN  Apache/2.4.52 (OWASP Hardened / HSTS Enforced)<br>
+        [+] 443/tcp OPEN  Django REST Architecture (AES-256-GCM / Zero-Knowledge Storage)
+      </div>
+
+      <!-- Command 3 -->
+      <div class="cmd-line d5">
+        <span class="prompt-user">hardik@kali</span>:<span class="prompt-dir">~</span><span class="prompt-sym">$</span> <span class="prompt-cmd">cat /root/mission.txt</span>
+      </div>
+      <div class="output gold d6">
+        # "Build resilient architectures. Break insecure abstractions. Secure the digital perimeter."
+      </div>
+
+      <!-- Command 4 -->
+      <div class="cmd-line d7">
+        <span class="prompt-user">hardik@kali</span>:<span class="prompt-dir">~</span><span class="prompt-sym">$</span> <span class="prompt-cmd">./display_capabilities.sh</span>
+      </div>
+      <div class="output d8">
+        <div class="pill-box">
+          <span class="pill">Web App Pentesting</span>
+          <span class="pill">Network Exploitation</span>
+          <span class="pill">Privilege Escalation &amp; Pivoting</span>
+          <span class="pill">Python / Django REST Framework</span>
+          <span class="pill">AES-256-GCM Cryptography</span>
+          <span class="pill">Linux &amp; Docker Systems</span>
+        </div>
+      </div>
+
+      <!-- Active Prompt -->
+      <div class="cmd-line d8" style="margin-top: 14px;">
+        <span class="prompt-user">hardik@kali</span>:<span class="prompt-dir">~</span><span class="prompt-sym">$</span> <span class="cursor">_</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-footer">
+    <a href="https://hardikgaikwad.vercel.app" target="_blank" rel="noopener">Interactive Portfolio Site 🡭</a>
+    <a href="https://github.com/hardikgaikwad" target="_blank" rel="noopener">GitHub Profile 🡭</a>
+    <a href="https://linkedin.com/in/hardikgaikwad" target="_blank" rel="noopener">LinkedIn 🡭</a>
+  </div>
+
+</body>
+</html>
