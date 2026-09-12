@@ -1,151 +1,90 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 400" width="100%" height="100%">
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 330" width="100%" height="auto">
   <defs>
-    <!-- Background Graph Paper Pattern -->
-    <pattern id="termGrid" width="20" height="20" patternUnits="userSpaceOnUse">
-      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(46, 76, 112, 0.14)" stroke-width="0.75"/>
+    <!-- Background Graph Grid Pattern -->
+    <pattern id="tGrid" width="14" height="14" patternUnits="userSpaceOnUse">
+      <path d="M 14 0 L 0 0 0 14" fill="none" stroke="#1E293B" stroke-width="0.75" opacity="0.6"/>
     </pattern>
 
-    <linearGradient id="termHeaderGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <linearGradient id="tHeaderGrad" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#1A2533" />
-      <stop offset="100%" stop-color="#121A24" />
+      <stop offset="100%" stop-color="#111822" />
     </linearGradient>
-
-    <!-- Drop Shadow Filter -->
-    <filter id="termShadow" x="-3%" y="-5%" width="106%" height="115%">
-      <feDropShadow dx="3" dy="5" stdDeviation="0" flood-color="#050B12" flood-opacity="0.9" />
-    </filter>
   </defs>
 
   <style>
-    .t-mono { font-family: 'Space Mono', 'Fira Code', 'Consolas', monospace; }
-    
-    /* Typing & Line Stagger Animations */
-    .l1  { opacity: 0; animation: fadeIn 0.1s 0.2s forwards; }
-    .l2  { opacity: 0; animation: fadeIn 0.1s 0.9s forwards; }
-    .l3  { opacity: 0; animation: fadeIn 0.1s 1.7s forwards; }
-    .l4  { opacity: 0; animation: fadeIn 0.1s 2.3s forwards; }
-    .l5  { opacity: 0; animation: fadeIn 0.1s 2.6s forwards; }
-    .l6  { opacity: 0; animation: fadeIn 0.1s 2.9s forwards; }
-    .l7  { opacity: 0; animation: fadeIn 0.1s 3.6s forwards; }
-    .l8  { opacity: 0; animation: fadeIn 0.1s 4.2s forwards; }
-    .l9  { opacity: 0; animation: fadeIn 0.1s 4.9s forwards; }
-    .l10 { opacity: 0; animation: fadeIn 0.1s 5.5s forwards; }
-    .l11 { opacity: 0; animation: fadeIn 0.1s 6.2s forwards; }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateX(-4px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-
-    /* Blinking Block Cursor */
-    .cursor {
-      animation: blink 1s step-end infinite;
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
+    .t-mono { font-family: 'Space Mono', 'Consolas', 'Courier New', monospace; }
   </style>
 
-  <!-- Main Terminal Box with Drop Shadow -->
-  <g filter="url(#termShadow)">
-    <rect x="10" y="10" width="920" height="375" rx="8" fill="#0D1117" stroke="#2E4C70" stroke-width="1.5" />
-    <rect x="10" y="10" width="920" height="375" rx="8" fill="url(#termGrid)" />
+  <!-- Terminal Drop Shadow Box (Standard SVG 1.1) -->
+  <rect x="14" y="14" width="816" height="306" rx="8" fill="#050B12" opacity="0.8" />
 
-    <!-- Terminal Header Bar -->
-    <rect x="10" y="10" width="920" height="38" rx="8" fill="url(#termHeaderGrad)" />
-    <rect x="10" y="40" width="920" height="8" fill="#121A24" />
-    <line x1="10" y1="48" x2="930" y2="48" stroke="#2E4C70" stroke-width="1.2" />
+  <!-- Main Terminal Box -->
+  <rect x="10" y="10" width="820" height="310" rx="8" fill="#0D1117" stroke="#2E4C70" stroke-width="1.5" />
+  <rect x="10" y="10" width="820" height="310" rx="8" fill="url(#tGrid)" />
 
-    <!-- Traffic Light Controls -->
-    <circle cx="34" cy="29" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width="0.5" />
-    <circle cx="54" cy="29" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width="0.5" />
-    <circle cx="74" cy="29" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width="0.5" />
+  <!-- Terminal Header Bar -->
+  <rect x="10" y="10" width="820" height="34" rx="8" fill="url(#tHeaderGrad)" />
+  <rect x="10" y="36" width="820" height="8" fill="#111822" />
+  <line x1="10" y1="44" x2="830" y2="44" stroke="#2E4C70" stroke-width="1.2" />
 
-    <!-- Centered Terminal Session Title -->
-    <text x="470" y="33" text-anchor="middle" class="t-mono" fill="#94A3B8" font-size="12" font-weight="600" letter-spacing="0.08em">
-      hardik@kali: ~/pentest  <tspan fill="#4D7FA9">[BASH 5.2 // OFFSEC ARCHITECTURE]</tspan>
-    </text>
+  <!-- Window Controls -->
+  <circle cx="28" cy="27" r="5" fill="#FF5F56" />
+  <circle cx="44" cy="27" r="5" fill="#FFBD2E" />
+  <circle cx="60" cy="27" r="5" fill="#27C93F" />
 
-    <!-- Right Status -->
-    <text x="910" y="33" text-anchor="end" class="t-mono" fill="#22C55E" font-size="11" font-weight="700" letter-spacing="0.06em">
-      ONLINE ●
-    </text>
-  </g>
+  <!-- Header Title -->
+  <text x="420" y="30" text-anchor="middle" class="t-mono" fill="#94A3B8" font-size="11" font-weight="600" letter-spacing="0.08em">
+    hardik@kali: ~/pentest  <tspan fill="#4D7FA9">[BASH 5.2 // OFFSEC ENCRYPTED SHELL]</tspan>
+  </text>
 
-  <!-- Terminal Commands and Colored Output -->
-  <g class="t-mono" font-size="13" transform="translate(30, 75)">
+  <!-- Right Online Status Indicator -->
+  <circle cx="798" cy="27" r="3" fill="#22C55E" />
+  <text x="814" y="30" text-anchor="end" class="t-mono" fill="#22C55E" font-size="10.5" font-weight="700" letter-spacing="0.06em">
+    ONLINE
+  </text>
+
+  <!-- Terminal Commands & Outputs -->
+  <g class="t-mono" font-size="12">
     <!-- Command 1 -->
-    <g class="l1">
-      <text x="0" y="0">
-        <tspan fill="#E0732E" font-weight="700">hardik@kali</tspan><tspan fill="#94A3B8">:</tspan><tspan fill="#4D7FA9">~</tspan><tspan fill="#E0B23A" font-weight="700">$</tspan> <tspan fill="#EDE8DC" font-weight="700">whoami</tspan>
-      </text>
-    </g>
-
+    <text x="32" y="74">
+      <tspan fill="#E0732E" font-weight="700">hardik@kali</tspan><tspan fill="#94A3B8">:</tspan><tspan fill="#4D7FA9">~</tspan><tspan fill="#E0B23A" font-weight="700">$</tspan> <tspan fill="#EDE8DC" font-weight="700">whoami</tspan>
+    </text>
     <!-- Output 1 -->
-    <g class="l2">
-      <text x="0" y="22" fill="#22C55E" font-weight="600">
-        hardik <tspan fill="#64748B">—</tspan> <tspan fill="#EDE8DC">Cybersecurity Researcher &amp; Software Engineer</tspan> <tspan fill="#E0B23A">[eJPT | THM Top 4%]</tspan>
-      </text>
-    </g>
+    <text x="32" y="96" fill="#22C55E" font-weight="600">
+      hardik <tspan fill="#64748B">—</tspan> <tspan fill="#EDE8DC">Offensive Security Researcher &amp; Software Engineer</tspan> <tspan fill="#E0B23A">[eJPT | THM Top 4%]</tspan>
+    </text>
 
     <!-- Command 2 -->
-    <g class="l3">
-      <text x="0" y="52">
-        <tspan fill="#E0732E" font-weight="700">hardik@kali</tspan><tspan fill="#94A3B8">:</tspan><tspan fill="#4D7FA9">~</tspan><tspan fill="#E0B23A" font-weight="700">$</tspan> <tspan fill="#EDE8DC" font-weight="700">nmap -sV -sC -Pn target.corp</tspan>
-      </text>
-    </g>
-
+    <text x="32" y="126">
+      <tspan fill="#E0732E" font-weight="700">hardik@kali</tspan><tspan fill="#94A3B8">:</tspan><tspan fill="#4D7FA9">~</tspan><tspan fill="#E0B23A" font-weight="700">$</tspan> <tspan fill="#EDE8DC" font-weight="700">nmap -sV -sC -Pn target.corp</tspan>
+    </text>
     <!-- Output 2 (Nmap Port Scan) -->
-    <g class="l4">
-      <text x="0" y="74">
-        <tspan fill="#4D7FA9">[+] 22/tcp</tspan>  <tspan fill="#22C55E">OPEN</tspan>  <tspan fill="#94A3B8">ssh</tspan>     <tspan fill="#EDE8DC">OpenSSH 8.9p1 (Ubuntu Linux - KeyAuth Enforced)</tspan>
-      </text>
-    </g>
-    <g class="l5">
-      <text x="0" y="94">
-        <tspan fill="#4D7FA9">[+] 80/tcp</tspan>  <tspan fill="#22C55E">OPEN</tspan>  <tspan fill="#94A3B8">http</tspan>    <tspan fill="#EDE8DC">Apache/2.4.52 (OWASP Top 10 Hardened / HSTS Enforced)</tspan>
-      </text>
-    </g>
-    <g class="l6">
-      <text x="0" y="114">
-        <tspan fill="#4D7FA9">[+] 443/tcp</tspan> <tspan fill="#22C55E">OPEN</tspan>  <tspan fill="#94A3B8">ssl/http</tspan><tspan fill="#EDE8DC"> Django REST Architecture (AES-256-GCM / Zero-Knowledge Storage)</tspan>
-      </text>
-    </g>
+    <text x="32" y="148" fill="#4D7FA9">
+      [+] 22/tcp  <tspan fill="#22C55E">OPEN</tspan>  <tspan fill="#94A3B8">ssh</tspan>     <tspan fill="#EDE8DC">OpenSSH 8.9p1 Ubuntu (KeyAuth Enforced)</tspan>
+    </text>
+    <text x="32" y="168" fill="#4D7FA9">
+      [+] 80/tcp  <tspan fill="#22C55E">OPEN</tspan>  <tspan fill="#94A3B8">http</tspan>    <tspan fill="#EDE8DC">Apache/2.4.52 (OWASP Top 10 Hardened / HSTS)</tspan>
+    </text>
+    <text x="32" y="188" fill="#4D7FA9">
+      [+] 443/tcp <tspan fill="#22C55E">OPEN</tspan>  <tspan fill="#94A3B8">https</tspan>   <tspan fill="#EDE8DC">Django REST Architecture (AES-256-GCM / E2EE Storage)</tspan>
+    </text>
 
     <!-- Command 3 -->
-    <g class="l7">
-      <text x="0" y="144">
-        <tspan fill="#E0732E" font-weight="700">hardik@kali</tspan><tspan fill="#94A3B8">:</tspan><tspan fill="#4D7FA9">~</tspan><tspan fill="#E0B23A" font-weight="700">$</tspan> <tspan fill="#EDE8DC" font-weight="700">cat /root/mission.txt</tspan>
-      </text>
-    </g>
-
+    <text x="32" y="218">
+      <tspan fill="#E0732E" font-weight="700">hardik@kali</tspan><tspan fill="#94A3B8">:</tspan><tspan fill="#4D7FA9">~</tspan><tspan fill="#E0B23A" font-weight="700">$</tspan> <tspan fill="#EDE8DC" font-weight="700">cat /root/mission.txt</tspan>
+    </text>
     <!-- Output 3 -->
-    <g class="l8">
-      <text x="0" y="166" fill="#E0B23A" font-style="italic">
-        # "Build resilient architectures. Break insecure abstractions. Secure the digital perimeter."
-      </text>
-    </g>
+    <text x="32" y="240" fill="#E0B23A" font-style="italic">
+      # "Build resilient architectures. Break insecure abstractions. Secure the digital perimeter."
+    </text>
 
     <!-- Command 4 -->
-    <g class="l9">
-      <text x="0" y="196">
-        <tspan fill="#E0732E" font-weight="700">hardik@kali</tspan><tspan fill="#94A3B8">:</tspan><tspan fill="#4D7FA9">~</tspan><tspan fill="#E0B23A" font-weight="700">$</tspan> <tspan fill="#EDE8DC" font-weight="700">./display_capabilities.sh --active</tspan>
-      </text>
-    </g>
-
-    <!-- Output 4 (Pill Badges) -->
-    <g class="l10">
-      <text x="0" y="218">
-        <tspan fill="#22C55E">[✓] Web App Pentesting</tspan>   <tspan fill="#4D7FA9">[✓] Network Exploitation</tspan>   <tspan fill="#E0B23A">[✓] Privilege Escalation</tspan>   <tspan fill="#E0732E">[✓] Python/Django</tspan>
-      </text>
-    </g>
-
-    <!-- Active Prompt with Blinking Cursor -->
-    <g class="l11">
-      <text x="0" y="250">
-        <tspan fill="#E0732E" font-weight="700">hardik@kali</tspan><tspan fill="#94A3B8">:</tspan><tspan fill="#4D7FA9">~</tspan><tspan fill="#E0B23A" font-weight="700">$</tspan> <tspan fill="#22C55E" class="cursor">█</tspan>
-      </text>
-    </g>
+    <text x="32" y="270">
+      <tspan fill="#E0732E" font-weight="700">hardik@kali</tspan><tspan fill="#94A3B8">:</tspan><tspan fill="#4D7FA9">~</tspan><tspan fill="#E0B23A" font-weight="700">$</tspan> <tspan fill="#EDE8DC" font-weight="700">./display_capabilities.sh</tspan>
+    </text>
+    <!-- Output 4 -->
+    <text x="32" y="292">
+      <tspan fill="#22C55E">[✓] Web Pentesting</tspan>  <tspan fill="#4D7FA9">[✓] Network Exploitation</tspan>  <tspan fill="#E0B23A">[✓] Privilege Escalation</tspan>  <tspan fill="#E0732E">[✓] Python/Django</tspan>
+    </text>
   </g>
 </svg>

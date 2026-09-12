@@ -1,6 +1,6 @@
 ﻿<div align="center">
 
-<!-- Hero Banner SVG (3D Retro Wordmark, Graph Paper Grid & Security Header) -->
+<!-- Hero Banner (Proportionally Scaled 3D Retro Wordmark & Security Bar) -->
 <img src="./assets/hero-banner.svg" alt="Hardik Gaikwad - Cybersecurity Engineer & Software Developer" width="100%" />
 
 <br />
@@ -28,7 +28,6 @@
 ### 🖥️ `TERMINAL PROTOCOL // ACTIVE SHELL`
 
 <div align="center">
-  <!-- Living Animated Terminal Shell inside SVG -->
   <img src="./assets/animated-terminal.svg" alt="Hardik Gaikwad Terminal Shell" width="100%" />
 </div>
 
@@ -54,7 +53,6 @@ CORE_OBJECTIVE  : "Bridging the gap between vulnerability discovery and resilien
 ### ⚡ `CAPABILITIES & ARSENAL MATRIX`
 
 <div align="center">
-  <!-- Technical Capabilities Blueprint Matrix -->
   <img src="./assets/tech-stack.svg" alt="Hardik Gaikwad Capabilities Matrix" width="100%" />
 </div>
 
@@ -158,18 +156,6 @@ CORE_OBJECTIVE  : "Bridging the gap between vulnerability discovery and resilien
 [![Email](https://img.shields.io/badge/EMAIL-hardikgaikwad04@gmail.com-001F3F?style=for-the-badge&logo=gmail&logoColor=white)](mailto:hardikgaikwad04@gmail.com)
 
 <br />
-
-<!-- Authentic Hand-Sprayed H4DK Signature Tag -->
-<table border="0" style="border: none; background: transparent;">
-  <tr style="border: none; background: transparent;">
-    <td align="right" style="border: none; background: transparent;">
-      <p align="right">
-        <i>Authentic Graffiti Tag // Verified Fingerprint</i><br />
-        <img src="./assets/h4dk-signature.svg" alt="H4DK Signature Tag" width="260" />
-      </p>
-    </td>
-  </tr>
-</table>
 
 <p align="center">
   <sub>© 2026 Hardik Gaikwad. Printed on Graph Repro-Paper. All Rights Reserved.</sub>
